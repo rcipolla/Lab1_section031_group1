@@ -13,30 +13,29 @@ public class Round {
 		Roll RoundOpener = new Roll();
 		ComeOutScore = RoundOpener.getScore();
 		rolls.add(RoundOpener);
-
-		int Looper = 0;
-		while (Looper<1) {
 			
 			if (ComeOutScore == 7 || ComeOutScore == 11) {
 				eGameResult result = eGameResult.NATURAL;
 				System.out.println(result + "! \n");
-				break;
+
 			}else if (ComeOutScore == 2 || ComeOutScore == 3 || ComeOutScore == 12) {
 				eGameResult result = eGameResult.CRAPS;
 				System.out.println(result + "! \n");
-				break;
+
 			} else {
-				Roll NextRoll = new Roll();
-				rolls.add(NextRoll);
-					
-				if (NextRoll.getScore() == ComeOutScore) {
-					eGameResult result = eGameResult.POINT;
-					System.out.println(result + "! \n");	
-					break;
-				}else if (NextRoll.getScore() == 7) {
-					eGameResult result = eGameResult.SEVEN_OUT;
-					System.out.println(result + "! \n");	
-					break;	
+				int Looper = 0;
+				while (Looper<1) {
+					Roll NextRoll = new Roll();
+					rolls.add(NextRoll);
+						
+					if (NextRoll.getScore() == ComeOutScore) {
+						eGameResult result = eGameResult.POINT;
+						System.out.println(result + "! \n");	
+						Looper=1;
+					}else if (NextRoll.getScore() == 7) {
+						eGameResult result = eGameResult.SEVEN_OUT;
+						System.out.println(result + "! \n");	
+						Looper = 1;	
 				}
 			}
 			
